@@ -1,0 +1,60 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+    <!-- i18n -->
+    <resource type="i18n" name="i18n" location="i18n/common" />
+    <!-- ao -->
+    <ao key="ao-module" namespace="com.confluence.space.watcher">
+        <description>Active Objects service</description>
+        <entity>com.confluence.plugins.watcher.WatcherUserEntity</entity>
+    </ao>
+    <!-- / ao -->
+    <!-- actions -->
+    <xwork key="watcher-actions" name="Watcher actions">
+        <package name="com.confluence.plugins.watcher" extends="default" namespace="/admin/watcher-manager">
+            <default-interceptor-ref name="defaultStack" />
+            <action name="watcher-manager-settings" class="com.confluence.plugins.watcher.SettingsAction">
+                <result name="success" type="velocity">/vm/watcher/settings.vm</result>
+            </action>
+        </package>
+    </xwork>
+    <!-- / actions -->
+    <!-- listener -->
+    <!-- <listener name="User event listener" class="com.confluence.plugins.watcher.WatcherEventListener" key="userEventListener" /> -->
+    <!-- / listener -->
+    <!-- job-config -->
+    <job-config name="Job config" key="WatcherJob">
+        <job key="watcherJobRunner" perClusterJob="true" />
+        <schedule cron-expression="0 0 0 * * ?" />
+        <managed editable="true" keepingHistory="true" canRunAdhoc="true" canDisable="true" />
+    </job-config>
+    <!-- / job-config -->
+    <!-- admin section -->
+    <web-section key="space-watcher-plugin-settings-admin-section" name="Settings admin section" location="system.admin" weight="230">
+        <description>Секция настроек в админке</description>
+        <label key="watcher.plugin.settings.section" />
+        <condition class="com.atlassian.confluence.plugin.descriptor.web.conditions.ConfluenceAdministratorCondition" />
+    </web-section>
+    <web-item key="space-watcher-plugin-settings-admin-web-item" name="Settings link" section="system.admin/space-watcher-plugin-settings-admin-section" weight="100">
+        <description key="watcher.plugin.settings.link" />
+        <label key="watcher.plugin.settings.link" />
+        <link>/admin/watcher-manager/watcher-manager-settings.action</link>
+    </web-item>
+    <!-- / admin section -->
+    <!-- web resources -->
+    <web-resource key="web-resources" name="Web resources">
+        <resource type="download" name="runtime~main.js" location="/client/static/js/runtime~main.js" />
+        <resource type="download" name="main.chunk.js" location="/client/static/js/main.chunk.js" />
+        <resource type="download" name="0.chunk.js" location="/client/static/js/0.chunk.js" />
+    </web-resource>
+    <!-- web resources -->
+    <!-- rest -->
+    <rest key="rest" path="/watcher-manager" version="1">
+        <description>Provides REST resources.</description>
+    </rest>
+</atlassian-plugin>

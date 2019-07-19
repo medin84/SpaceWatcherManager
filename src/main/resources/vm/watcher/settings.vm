@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>$generalUtil.htmlEncode($i18n.getText("watcher.plugin.settings.section"))</title>
+    #requireResource("com.confluence.plugins.space-watcher-manager:web-resources")
+</head>
+<body>
+    <content tag="selectedWebItem">space-watcher-plugin-settings-admin-web-item</content>
+    ## <h2>$generalUtil.htmlEncode($i18n.getText("watcher.plugin.settings.section"))</h2>
+    <div id="watcher-settings">Loading...</div>
+</body>
+</html>

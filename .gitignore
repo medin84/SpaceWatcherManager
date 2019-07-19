@@ -1,0 +1,22 @@
+db.properties
+
+# dependency cache
+node_modules
+
+# build
+static/bundle.js
+build/
+target/
+src/main/resources/client
+
+# logs
+npm-debug.log
+
+# editor config
+.idea
+.settings
+.vscode
+*.iml
+
+# OS files
+*.DS_Store
