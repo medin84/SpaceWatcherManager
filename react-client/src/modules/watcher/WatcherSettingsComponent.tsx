@@ -240,7 +240,7 @@ export class WatcherSettingsComponent extends Component<any, State> {
                           className="aui-button aui-button-link"
                           onClick={e => this.handleDeleteCfg(cfg)}
                         >
-                          Delete
+                          <i className="icon icon-remove" />
                         </button>
                       </td>
                     </tr>
