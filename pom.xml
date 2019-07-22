@@ -125,8 +125,8 @@
         </plugins>
     </build>
     <properties>
-        <confluence.version>6.14.0</confluence.version>
-        <confluence.data.version>6.14.0</confluence.data.version>
+        <confluence.version>5.10.4</confluence.version>
+        <confluence.data.version>5.10.4</confluence.data.version>
         <amps.version>8.0.0</amps.version>
         <plugin.testrunner.version>2.0.1</plugin.testrunner.version>
         <atlassian.spring.scanner.version>1.2.13</atlassian.spring.scanner.version>

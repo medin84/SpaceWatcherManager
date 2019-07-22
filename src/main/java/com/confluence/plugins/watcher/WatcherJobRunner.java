@@ -10,6 +10,7 @@ import com.atlassian.scheduler.JobRunnerRequest;
 import com.atlassian.scheduler.JobRunnerResponse;
 
 import javax.annotation.Nullable;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -22,6 +23,7 @@ public class WatcherJobRunner implements JobRunner {
     @ComponentImport
     private final TransactionTemplate transactionTemplate;
 
+    @Inject
     public WatcherJobRunner(PluginSettingsFactory psf, ActiveObjects ao, TransactionTemplate transactionTemplate) {
         this.psf = psf;
         this.ao = ao;
