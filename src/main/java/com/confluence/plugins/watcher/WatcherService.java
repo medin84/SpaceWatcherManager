@@ -254,6 +254,6 @@ public class WatcherService {
 
     private void log(String message) {
         log.info(message);
-        System.out.println("======================            " + message);
+        // System.out.println("======================            " + message);
     }
 }
